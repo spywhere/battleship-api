@@ -12,7 +12,8 @@ A collection to keep track of what and where is the tile on the board, a lack of
 Column|Type|Description
 :-:|:-:|---
 _id_|UID|Auto-generated
-player_type|string|Player type (defender, attacker)
+is_ship_head|boolean|A flag to indicate if the tile is a placement position
+ship_id|string|Ship identifier (for this project, is placement coordinate)
 tile_type|string|Tile type (fleet type)
 position_x|int|Position from the left of the board
 position_y|int|Position from the top of the board
@@ -25,11 +26,11 @@ A collection to keep track of who doing what and where on the board
 Column|Type|Description
 :-:|:-:|---
 _id_|UID|Auto-generated
-player_type|string|Player type (defender, attacker)
+tile_type|string|Tile type (fleet type)
 position_x|int|Position from the left of the board
 position_y|int|Position from the top of the board
+player_type|string|Player type (defender, attacker)
 action|string|Action performed by the player (place, attack)
-tile_type|string|Tile type (fleet type)
 
 ## Scaling the game
 
@@ -56,7 +57,6 @@ Action|Column|Type|Description
 :-:|:-:|:-:|---
 Add column|board_id|UID|Board reference number
 Add column|player_id|UID|Player reference number
-Remove column|player_type|string|Player type (defender / attacker)
 Add column|tile_id|UID|Tile reference number
 Remove column|tile_type|string|Tile type (fleet type)
 
