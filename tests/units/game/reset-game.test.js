@@ -7,7 +7,8 @@ const controller = Controller.mock(delegate);
 describe("Game reset", () => {
     it("should try to remove all board tiles", async() => {
         const adapters = {
-            dropBoardTile: jest.fn(async() => undefined)
+            dropBoardTile: jest.fn(async() => undefined),
+            dropBattleLog: jest.fn(async() => undefined)
         };
 
         const response = await controller.perform({
@@ -21,5 +22,6 @@ describe("Game reset", () => {
         });
 
         expect(adapters.dropBoardTile).toBeCalled();
+        expect(adapters.dropBattleLog).toBeCalled();
     });
 });

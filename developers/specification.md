@@ -69,7 +69,7 @@ Response
 content-type: application/json
 
 {
-    "message": string
+    "status": string
 }
 ```
 
@@ -99,7 +99,7 @@ Response
 content-type: application/json
 
 {
-    "message": string
+    "status": string
 }
 ```
 
@@ -127,7 +127,9 @@ Response
 content-type: application/json
 
 {
-    "message": string
+    "status": string,
+    "shots_fired": number,
+    "missed_shots": number
 }
 ```
 

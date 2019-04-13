@@ -2,7 +2,8 @@ const errors = require("../../common/errors");
 
 module.exports = {
     adapters: [
-        "mongodb/board-tile"
+        "mongodb/board-tile",
+        "mongodb/battle-log"
     ],
     perform: async({ config, request, adapters }) => {
         const gameOptions = config.for("game");
@@ -147,7 +148,15 @@ module.exports = {
             ...previous, ...current
         ], []);
 
-        await adapters.insertBoardTiles(shipTiles);
+        await Promise.all([
+            adapters.insertBoardTiles(shipTiles),
+            adapters.insertBattleLog({
+                tileType: shipType,
+                positionX,
+                positionY,
+                action: "place"
+            })
+        ]);
 
         return {
             body: {

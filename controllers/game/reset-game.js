@@ -1,9 +1,13 @@
 module.exports = {
     adapters: [
-        "mongodb/board-tile"
+        "mongodb/board-tile",
+        "mongodb/battle-log"
     ],
     perform: async({ adapters }) => {
-        await adapters.dropBoardTile();
+        await Promise.all([
+            adapters.dropBoardTile(),
+            adapters.dropBattleLog()
+        ]);
 
         return {
             body: {

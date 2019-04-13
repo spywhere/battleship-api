@@ -86,7 +86,8 @@ describe("Fleet placement", () => {
         const adapters = {
             getBoardTilesBy: async() => [],
             getBoardTileBy: async() => undefined,
-            insertBoardTiles: jest.fn(async() => undefined)
+            insertBoardTiles: jest.fn(async() => undefined),
+            insertBattleLog: jest.fn(async() => undefined)
         };
 
         const response = await controller.perform({
@@ -107,6 +108,7 @@ describe("Fleet placement", () => {
         });
 
         expect(adapters.insertBoardTiles).toBeCalled();
+        expect(adapters.insertBattleLog).toBeCalled();
     });
 
     it("should place multiple ship tiles (horizontal)", async() => {
@@ -115,7 +117,8 @@ describe("Fleet placement", () => {
         const adapters = {
             getBoardTilesBy: async() => [],
             getBoardTileBy: async() => undefined,
-            insertBoardTiles: jest.fn(async(tiles) => storage.push(...tiles))
+            insertBoardTiles: jest.fn(async(tiles) => storage.push(...tiles)),
+            insertBattleLog: jest.fn(async() => undefined)
         };
 
         const response = await controller.perform({
@@ -137,6 +140,7 @@ describe("Fleet placement", () => {
         });
 
         expect(adapters.insertBoardTiles).toBeCalled();
+        expect(adapters.insertBattleLog).toBeCalled();
 
         expect(storage).toMatchObject([{
             isShipHead: true,
@@ -175,7 +179,8 @@ describe("Fleet placement", () => {
         const adapters = {
             getBoardTilesBy: async() => [],
             getBoardTileBy: async() => undefined,
-            insertBoardTiles: jest.fn(async(tiles) => storage.push(...tiles))
+            insertBoardTiles: jest.fn(async(tiles) => storage.push(...tiles)),
+            insertBattleLog: jest.fn(async() => undefined)
         };
 
         const response = await controller.perform({
@@ -197,6 +202,7 @@ describe("Fleet placement", () => {
         });
 
         expect(adapters.insertBoardTiles).toBeCalled();
+        expect(adapters.insertBattleLog).toBeCalled();
 
         expect(storage).toMatchObject([{
             isShipHead: true,

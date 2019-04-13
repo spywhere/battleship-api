@@ -29,7 +29,6 @@ _id_|UID|Auto-generated
 tile_type|string|Tile type (fleet type)
 position_x|int|Position from the left of the board
 position_y|int|Position from the top of the board
-player_type|string|Player type (defender, attacker)
 action|string|Action performed by the player (place, attack)
 
 ## Scaling the game
@@ -66,6 +65,5 @@ Action|Column|Type|Description
 :-:|:-:|:-:|---
 Add column|board_id|UID|Board reference number
 Add column|player_id|UID|Player reference number
-Remove column|player_type|string|Player type (defender / attacker)
 Add column|tile_id|UID|Tile reference number
 Remove column|tile_type|string|Tile type (fleet type)
