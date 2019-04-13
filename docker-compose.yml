@@ -1,0 +1,18 @@
+version: "3"
+services:
+  api:
+    build:
+      context: ./
+    image: battleship-api:latest
+    container_name: api
+    environment:
+      MONGODB_HOST: mongo
+    ports:
+      - 3000:3000
+    volumes:
+      - ../:/app
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - 27017:27017

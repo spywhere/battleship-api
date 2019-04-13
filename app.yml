@@ -1,0 +1,7 @@
+apps:
+  - name: app
+    script: ./app.js
+    instances: 2
+  - name: dev
+    script: ./app.js
+    watch: true

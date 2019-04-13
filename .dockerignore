@@ -1,0 +1,12 @@
+.DS_Store
+.dockerignore
+.git
+.gitignore
+.nyc_output
+.vscode
+node_modules
+.editorconfig
+.eslintignore
+.eslintrc.json
+Dockerfile
+README.md

@@ -1,0 +1,22 @@
+{
+  "name": "battleship-backend",
+  "version": "1.0.0",
+  "description": "A backend for BattleShip game",
+  "main": "app.js",
+  "scripts": {
+    "dev": "pm2 start app.yml --only dev",
+    "start": "pm2 start app.yml --only app --attach",
+    "postdev": "pm2 logs",
+    "poststart": "pm2 logs",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "author": "Sirisak Lueangsaksri",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4",
+    "jest": "^24.7.1",
+    "mongodb": "^3.2.3",
+    "pm2": "^3.5.0"
+  }
+}

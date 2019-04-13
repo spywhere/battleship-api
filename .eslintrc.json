@@ -1,0 +1,225 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        // Possible Errors
+        "no-template-curly-in-string": "warn",
+
+        // Best Practices
+        "complexity": ["warn", 20],
+        "consistent-return": "warn",
+        "no-magic-numbers": ["warn", {
+            "ignore": [-1, 0, 1]
+        }],
+        "no-param-reassign": "warn",
+        "id-blacklist": ["warn", "err", "e", "cb", "id"],
+
+        // Node.js and CommonJS
+        "callback-return": "warn",
+        "global-require": "warn",
+
+        // Stylistic Issues
+        "func-name-matching": "warn",
+        "max-depth": "warn",
+        "new-cap": "warn",
+        "no-tabs": "warn",
+
+        // ECMAScript 6
+        "prefer-const": "warn",
+
+        // Possible Errors
+        "no-await-in-loop": "error",
+
+        // Best Practices
+        "array-callback-return": "error",
+        "block-scoped-var": "error",
+        "curly": ["error", "all"],
+        "default-case": "error",
+        "dot-location": ["error", "property"],
+        "dot-notation": "error",
+        "eqeqeq": ["error", "always"],
+        "guard-for-in": "error",
+        "no-alert": "error",
+        "no-caller": "error",
+        "no-else-return": ["error", {
+            "allowElseIf": false
+        }],
+        "no-empty-function": "error",
+        "no-eq-null": "error",
+        "no-eval": "error",
+        "no-extend-native": "error",
+        "no-extra-bind": "error",
+        "no-extra-label": "error",
+        "no-floating-decimal": "error",
+        "no-implied-eval": "error",
+        "no-invalid-this": "error",
+        "no-iterator": "error",
+        "no-labels": "error",
+        "no-lone-blocks": "error",
+        "no-loop-func": "error",
+        "no-multi-spaces": "error",
+        "no-multi-str": "error",
+        "no-new-func": "error",
+        "no-new-wrappers": "error",
+        "no-octal-escape": "error",
+        "no-proto": "error",
+        "no-return-assign": ["error", "always"],
+        "no-return-await": "error",
+        "no-self-compare": "error",
+        "no-sequences": "error",
+        "no-throw-literal": "error",
+        "no-unmodified-loop-condition": "error",
+        "no-unused-expressions": ["error", {
+            "allowTernary": true,
+            "allowTaggedTemplates": true
+        }],
+        "no-useless-call": "error",
+        "no-useless-concat": "error",
+        "no-useless-return": "error",
+        "no-void": "error",
+        "no-with": "error",
+        "prefer-promise-reject-errors": "error",
+        "radix": ["error", "as-needed"],
+        "wrap-iife": "error",
+        "yoda": "error",
+
+        // Strict
+        "strict": ["error", "never"],
+
+        // Variables
+        "no-catch-shadow": "error",
+        "no-label-var": "error",
+        "no-shadow": "error",
+        "no-shadow-restricted-names": "error",
+        "no-use-before-define": ["error", {
+            "functions": false
+        }],
+
+        // Node.js and CommonJS
+        "handle-callback-err": "error",
+        "no-buffer-constructor": "error",
+        "no-new-require": "error",
+        "no-path-concat": "error",
+
+        // Stylistic Issues
+        "array-bracket-newline": ["error", "consistent"],
+        "array-bracket-spacing": ["error", "always", {
+            "singleValue": false,
+            "objectsInArrays": false,
+            "arraysInArrays": false
+        }],
+        "block-spacing": "error",
+        "brace-style": ["error", "1tbs", {
+            "allowSingleLine": true
+        }],
+        "camelcase": ["error", {
+            "properties": "never"
+        }],
+        "capitalized-comments": ["error", "always", {
+            "ignoreConsecutiveComments": true
+        }],
+        "comma-dangle": "error",
+        "comma-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        "comma-style": "error",
+        "computed-property-spacing": "error",
+        "eol-last": "error",
+        "func-call-spacing": "error",
+        "func-names": ["error", "as-needed"],
+        "func-style": ["error", "declaration", {
+            "allowArrowFunctions": true
+        }],
+        "function-paren-newline": ["error", "consistent"],
+        "implicit-arrow-linebreak": "error",
+        "indent": ["error", 4],
+        "key-spacing": "error",
+        "keyword-spacing": "error",
+        "line-comment-position": "error",
+        "linebreak-style": ["error", "unix"],
+        "lines-between-class-members": "error",
+        "max-len": ["error", {
+            "code": 79
+        }],
+        "max-nested-callbacks": "error",
+        "max-statements-per-line": "error",
+        "new-parens": "error",
+        "no-array-constructor": "error",
+        "no-lonely-if": "error",
+        "no-mixed-operators": "error",
+        "no-multi-assign": "error",
+        "no-multiple-empty-lines": ["error", {
+            "max": 1,
+            "maxEOF": 1,
+            "maxBOF": 0
+        }],
+        "no-negated-condition": "error",
+        "no-new-object": "error",
+        "no-plusplus": "error",
+        "no-trailing-spaces": "error",
+        "no-unneeded-ternary": "error",
+        "no-whitespace-before-property": "error",
+        "object-curly-newline": ["error", {
+            "consistent": true
+        }],
+        "object-curly-spacing": ["error", "always", {
+            "arraysInObjects": false,
+            "objectsInObjects": false
+        }],
+        "one-var": ["error", "never"],
+        "one-var-declaration-per-line": ["error", "always"],
+        "operator-assignment": "error",
+        "operator-linebreak": ["error", "after"],
+        "padded-blocks": ["error", "never"],
+        // NOTE(sirisak.lu): Available on ESLint 5
+        // "prefer-object-spread": "error",
+        "quote-props": ["error", "as-needed"],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "semi-spacing": "error",
+        "semi-style": "error",
+        "space-before-blocks": "error",
+        "space-before-function-paren": ["error", "never"],
+        "space-in-parens": "error",
+        "space-infix-ops": "error",
+        "spaced-comment": "error",
+        "switch-colon-spacing": "error",
+        "template-tag-spacing": "error",
+
+        // ECMAScript 6
+        "arrow-body-style": "error",
+        "arrow-parens": "error",
+        "arrow-spacing": "error",
+        "generator-star-spacing": "error",
+        "no-confusing-arrow": ["error", {
+            "allowParens": true
+        }],
+        "no-duplicate-imports": ["error", {
+            "includeExports": true
+        }],
+        "no-useless-computed-key": "error",
+        "no-useless-constructor": "error",
+        "no-useless-rename": "error",
+        "no-var": "error",
+        "prefer-destructuring": ["error", {
+            "array": true,
+            "object": true
+        }],
+        "prefer-numeric-literals": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "prefer-template": "error",
+        "rest-spread-spacing": "error",
+        "template-curly-spacing": ["error", "always"],
+        "yield-star-spacing": ["error", "before"]
+    }
+}
