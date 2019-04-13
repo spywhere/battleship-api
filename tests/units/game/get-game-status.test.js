@@ -37,7 +37,7 @@ describe("Game status", () => {
                     position_x: 5,
                     position_y: 5,
                     tile_type: "destroyer",
-                    status: "destroyed"
+                    status: "attacked"
                 }]
             }
         });
@@ -53,9 +53,10 @@ describe("Game status", () => {
                                 status: "placed"
                             } : (x === 5 && y === 5) ? {
                                 type: "destroyer",
-                                status: "destroyed"
+                                status: "attacked"
                             } : {
-                                type: "ocean"
+                                type: "ocean",
+                                status: "placed"
                             }
                         )
                     )
