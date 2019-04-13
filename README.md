@@ -6,6 +6,7 @@ For simplicity purpose, the following points are assumed...
 - A connection to another system are made as simple as possible, that is no connection handling, no error handling built-in for connection
 - All game limitations are checked by the code, rather by design
 - Fleet definition are defined by the code, rather by configurations
+- No data migration are considered, if the game rules are changed
 
 ## Setup
 
