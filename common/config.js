@@ -6,6 +6,7 @@ module.exports = (path, defaultConfig) => {
     try {
         config = caches[path];
         if (!config) {
+            // eslint-disable-next-line global-require
             config = require(`../config/${ path }`);
             caches[path] = config;
         }

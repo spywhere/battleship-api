@@ -14,9 +14,13 @@
   "author": "Sirisak Lueangsaksri",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "jest": "^24.7.1",
     "mongodb": "^3.2.3",
     "pm2": "^3.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.7.1"
   }
 }
