@@ -8,6 +8,11 @@ module.exports = (app) => {
         method: "get",
         path: "/",
         controller: "game/get-game-status"
+    }, {
+        // Reset game
+        method: "post",
+        path: "/reset",
+        controller: "game/reset-game"
     }]);
 
     return router;

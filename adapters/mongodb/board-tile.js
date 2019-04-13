@@ -9,6 +9,10 @@ module.exports = adapter.connector({
             find: {
                 tile_type: tileType
             }
+        }),
+        dropBoardTile: () => ({
+            collection: "board_tile",
+            drop: []
         })
     }
 });
