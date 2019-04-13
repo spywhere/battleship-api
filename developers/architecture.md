@@ -53,6 +53,9 @@ dependencies as well as any middleware it may have, for app-wide
 request / response manupulations.
 
 ### Config
-
+Config module is responsible for loading configurations from file, as well as
+caching it. It also loading configuration by environment.
 
 ### Loader
+Loader is a module responsible for loading another module, mainly figuring out
+where the module is, and load it.

@@ -7,6 +7,7 @@ For simplicity purpose, the following points are assumed...
 - All game limitations are checked by the code, rather by design
 - Fleet definition are defined by the code, rather by configurations
 - No data migration are considered, if the game rules are changed
+- Previous game result / status is not saved when reset
 
 ## Setup
 
@@ -48,3 +49,11 @@ To run all unit tests, simply run...
 ```
 $ npm test
 ```
+
+For more details on the tests, refers to testing guide provided below
+
+## Documentations
+
+- `developers/design.md` Data Structure Design
+- `developers/architecture.md` Application Architecture
+- `developers/testing.md` Guide to Application Testing
