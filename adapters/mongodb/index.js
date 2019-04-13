@@ -95,13 +95,24 @@ class MongoDBAdapter extends Adapter {
             this.resources, datasourceName
         );
         const collection = database.collection(collectionName);
+        const readable = await database.listCollections({
+            name: collectionName
+        }).hasNext();
+
+        const existOperations = readable ? ["drop"] : [];
 
         const method = [
             "findOne", "find", "aggregate",
             "insert", "insertOne", "insertMany",
             "update", "updateOne", "updateMany",
             "findOneAndUpdate", "findOneAndReplace"
-        ].find((methodName) => !!parameter[methodName]);
+        ].concat(existOperations).find(
+            (methodName) => !!parameter[methodName]
+        );
+
+        if (!method) {
+            return undefined;
+        }
 
         return this.executeQuery(
             collection, method, parameter[method]
