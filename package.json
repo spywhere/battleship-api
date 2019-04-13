@@ -9,7 +9,7 @@
     "postdev": "pm2 logs",
     "poststart": "pm2 logs",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest --no-cache --coverage"
   },
   "author": "Sirisak Lueangsaksri",
   "private": true,
@@ -26,5 +26,20 @@
     "@types/node": "^11.13.4",
     "eslint": "^5.16.0",
     "jest": "^24.7.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/coverage/"
+    ],
+    "watchPathIgnorePatterns": [
+      "/node_modules/",
+      "/coverage/"
+    ],
+    "collectCoverageFrom": [
+      "**/controllers/**"
+    ]
   }
 }
