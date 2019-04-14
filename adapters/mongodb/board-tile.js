@@ -1,4 +1,5 @@
 const adapter = require("./index");
+const nosqlQuery = require("../../common/queries/nosql");
 
 module.exports = adapter.connector({
     battleship: {
@@ -40,6 +41,16 @@ module.exports = adapter.connector({
                 position_y: positionY,
                 status
             }
+        }),
+        updateBoardTilesBy: ({ shipID } = {}, { status }) => ({
+            collection: "board_tile",
+            updateMany: nosqlQuery({
+                ship_id: shipID
+            }, {
+                $set: {
+                    status
+                }
+            })
         }),
         dropBoardTile: () => ({
             collection: "board_tile",

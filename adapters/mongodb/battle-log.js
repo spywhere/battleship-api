@@ -23,6 +23,12 @@ module.exports = adapter.connector({
                 upsert: true
             })
         }),
+        getBattleLogsBy: ({ action } = {}) => ({
+            collection: "battle_log",
+            find: {
+                action
+            }
+        }),
         dropBattleLog: () => ({
             collection: "battle_log",
             drop: {}

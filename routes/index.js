@@ -1,3 +1,4 @@
+const attacker = require("./attacker");
 const defender = require("./defender");
 const game = require("./game");
 
@@ -20,6 +21,7 @@ module.exports = (app) => {
     //   Defender
     //     POST /defender/place
     router.use("/api", game(app));
+    router.use("/api", attacker(app));
     router.use("/api", defender(app));
 
     return router;

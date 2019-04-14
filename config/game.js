@@ -29,6 +29,7 @@ module.exports = {
             width: 10,
             height: 10
         },
+        ocean: "ocean",
         fleets: {
             battleship: {
                 size: 4,
