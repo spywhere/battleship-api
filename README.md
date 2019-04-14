@@ -5,15 +5,15 @@ For simplicity purpose, the following points are assumed...
 
 - A connection to another system are made as simple as possible, that is no connection handling, no error handling built-in for connection
 - All game limitations are checked by the code, rather by design
-- Fleet definition are defined by the code, rather by configurations
 - No data migration are considered, if the game rules are changed
 - Previous game result / status is not saved when reset
+- A visual representation of the game is solely for easy to read, no test was created for the feature
 
 ## Setup
 
 ### Recommended
 The easiest and fastest way to get the game up and running is by using Docker.
-Make sure Docker and Docker compose has been installed on your computer, then
+Make sure Docker and Docker Compose has been installed on your computer, then
 run the following command...
 
 ```

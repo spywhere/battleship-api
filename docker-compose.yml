@@ -6,11 +6,9 @@ services:
     image: battleship-api:latest
     container_name: api
     environment:
-      MONGODB_HOST: mongo
+      MONGODB_HOST: mongodb://mongo
     ports:
       - 3000:3000
-    volumes:
-      - ../:/app
   mongo:
     container_name: mongo
     image: mongo

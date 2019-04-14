@@ -39,7 +39,7 @@ This should give the 200 status code, with current time in the response.
 ### 2. Reset current game status, to make sure it properly connected to the database
 
 ```
-$ curl localhost:3000/api/reset
+$ curl -X POST localhost:3000/api/reset
 ```
 
 This should give the 200 status code, with a message indicate the action is
