@@ -1,5 +1,16 @@
 # BattleShip API
 
+## This is a KISS branch
+In this branch, we will Keep It Stupid Simple for the game. That said, there
+will be minimal design patterns and scalability considerations involved.
+
+Some of the things that being removed to KISS are...
+
+- Configurations
+- A structured routing
+- Dependency injections (via Controller)
+- Logging (will just directly print out into the console)
+
 ## Remarks
 For simplicity purpose, the following points are assumed...
 
