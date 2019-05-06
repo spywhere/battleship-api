@@ -1,7 +1,7 @@
 module.exports = {
     adapters: [
-        "board-tile",
-        "battle-log"
+        "models/board-tile",
+        "models/battle-log"
     ],
     perform: async({ adapters }) => {
         await Promise.all([

@@ -1,10 +1,10 @@
-const errors = require("../common/errors");
+const errors = require("../lib/errors");
 const gameOptions = require("../game");
 
 module.exports = {
     adapters: [
-        "board-tile",
-        "battle-log"
+        "models/board-tile",
+        "models/battle-log"
     ],
     perform: async({ request, adapters }) => {
         const {

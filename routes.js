@@ -1,7 +1,7 @@
 const express = require("express");
 
 const Controller = require("./common/controller");
-const errors = require("./common/errors");
+const errors = require("./lib/errors");
 
 const getGameStatus = require("./controllers/get-game-status");
 const resetGame = require("./controllers/reset-game");

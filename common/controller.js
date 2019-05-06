@@ -1,36 +1,11 @@
-const loader = require("./loader");
-
 function setupAdapters(adapterList) {
-    return adapterList.map((adapterPath) => {
-        const requirePath = loader.getRequirePath(
-            "/models", `${ adapterPath }`
-        );
-
-        if (!requirePath) {
-            throw new Error(`Adapter "${ adapterPath }" is not found.`);
-        }
-
+    return adapterList.map(
         // eslint-disable-next-line global-require
-        return require(requirePath);
-    }).reduce((previous, current) => ({ ...previous, ...current }), {});
+        (adapterPath) => require(`../${ adapterPath }`)
+    ).reduce((previous, current) => ({ ...previous, ...current }), {});
 }
 
 class Controller {
-    static load(delegateOrPath) {
-        if (typeof(delegateOrPath) === "string") {
-            try {
-                return new this(
-                    loader.getControllerDelegate(delegateOrPath)
-                );
-            } catch (error) {
-                console.error(error);
-                return undefined;
-            }
-        }
-
-        return new this(delegateOrPath);
-    }
-
     constructor(delegate) {
         this.delegate = delegate;
 
@@ -54,10 +29,7 @@ class Controller {
     }
 
     static mock(baseController) {
-        const controller = this.load(baseController);
-        if (!controller) {
-            throw new Error("Cannot load a controller");
-        }
+        const controller = new this(baseController);
         controller.mock = true;
 
         function convertToHTTPRequest(request) {
