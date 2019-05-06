@@ -1,5 +1,4 @@
 const Adapter = require("../adapter");
-const config = require("../../common/config");
 const nosqlQuery = require("../../common/queries/nosql");
 
 const mongodb = require("mongodb");
@@ -47,13 +46,11 @@ class MongoDBAdapter extends Adapter {
             return client.db(databaseName);
         }
 
-        const {
-            "mongodb-host": mongodbHost,
-            ...options
-        } = config("mongodb");
-
         client = await mongodb.connect(
-            mongodbHost, options
+            process.env.MONGODB_HOST || "mongodb://127.0.0.1:27017",
+            {
+                useNewUrlParser: true
+            }
         );
 
         return client.db(databaseName);

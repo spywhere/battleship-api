@@ -1,4 +1,4 @@
-const config = require("../common/config");
+const gameOptions = require("../game");
 
 function replaceAt(string, index, replacement) {
     if (!replacement) {
@@ -19,8 +19,6 @@ module.exports = {
         "mongodb/board-tile"
     ],
     perform: async({ adapters }) => {
-        const gameOptions = config("game");
-
         const tiles = await adapters.getBoardTilesBy();
 
         const shipLefts = Object.keys(gameOptions.fleets).map(

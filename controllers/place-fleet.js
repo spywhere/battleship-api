@@ -1,5 +1,5 @@
-const config = require("../common/config");
 const errors = require("../common/errors");
+const gameOptions = require("../game");
 
 module.exports = {
     adapters: [
@@ -7,8 +7,6 @@ module.exports = {
         "mongodb/battle-log"
     ],
     perform: async({ request, adapters }) => {
-        const gameOptions = config("game");
-
         const {
             ship_type: shipType,
             position_x: positionX,
