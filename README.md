@@ -1,18 +1,19 @@
 # BattleShip API
 
 ## This is a KISS branch
-In this branch, we will Keep It Stupid Simple for the game. That said, there
-will be minimal design patterns and scalability considerations involved.
+In this branch, we will **K**eep **I**t **S**tupid **S**imple for the game.
+That said, there will be minimal design patterns and scalability considerations involved.
 
-Some of the things that being removed to KISS are...
+Some of the things that has been removed to KISS are...
 
-- Configurations
+- Flexible error handling (will now use a basic error handling)
+- Some data isolation layers
 - A structured routing
 - Logging (will just directly print out into the console)
 - Some security considerations (for example: stack traces)
 
-We will still keep Docker and process management to help with easy setup and
-get the app running
+We will still keep Docker and process management support to help with easy
+setup and get the app running in no time
 
 ## Remarks
 For simplicity purpose, the following points are assumed...
