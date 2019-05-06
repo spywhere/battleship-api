@@ -1,9 +1,7 @@
 const mongo = require("../lib/mongo");
 
-module.exports = {
-    insertBoardTiles: async(
-        tiles
-    ) => mongo.collection("board_tile").insertMany(tiles.map(({
+async function insertBoardTiles(tiles) {
+    return mongo.collection("board_tile").insertMany(tiles.map(({
         isShipHead,
         shipID,
         tileType,
@@ -17,33 +15,53 @@ module.exports = {
         position_x: positionX,
         position_y: positionY,
         status
-    }))),
-    getBoardTilesBy: async(
-        { isShipHead, tileType } = {}
-    ) => mongo.collection("board_tile").find({
+    })));
+}
+
+async function getBoardTilesBy(
+    { isShipHead, tileType } = {}
+) {
+    return mongo.collection("board_tile").find({
         is_ship_head: isShipHead,
         tile_type: tileType
-    }),
-    getBoardTileBy: async({
-        tileType,
-        positionX,
-        positionY,
-        status
-    }) => mongo.collection("board_tile").findOne({
+    });
+}
+
+async function getBoardTileBy({
+    tileType,
+    positionX,
+    positionY,
+    status
+}) {
+    return mongo.collection("board_tile").findOne({
         tile_type: tileType,
         position_x: positionX,
         position_y: positionY,
         status
-    }),
-    updateBoardTilesBy: async(
-        { shipID } = {},
-        { status }
-    ) => mongo.collection("board_tile").updateMany({
+    });
+}
+
+async function updateBoardTilesBy(
+    { shipID } = {},
+    { status }
+) {
+    return mongo.collection("board_tile").updateMany({
         ship_id: shipID
     }, {
         $set: {
             status
         }
-    }),
-    dropBoardTile: async() => mongo.collection("board_tile").drop()
+    });
+}
+
+async function dropBoardTile() {
+    return mongo.collection("board_tile").drop();
+}
+
+module.exports = {
+    insertBoardTiles,
+    getBoardTilesBy,
+    getBoardTileBy,
+    updateBoardTilesBy,
+    dropBoardTile
 };

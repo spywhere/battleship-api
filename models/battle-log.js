@@ -1,9 +1,9 @@
 const mongo = require("../lib/mongo");
 
-module.exports = {
-    insertBattleLog: async({
-        tileType, positionX, positionY, action
-    }) => mongo.collection("battle_log").updateOne({
+async function insertBattleLog({
+    tileType, positionX, positionY, action
+}) {
+    return mongo.collection("battle_log").updateOne({
         tile_type: tileType,
         position_x: positionX,
         position_y: positionY,
@@ -17,9 +17,21 @@ module.exports = {
         }
     }, {
         upsert: true
-    }),
-    getBattleLogsBy: async(
-        { action } = {}
-    ) => mongo.collection("battle_log").find({ action }),
-    dropBattleLog: async() => mongo.collection("battle_log").drop()
+    });
+}
+
+async function getBattleLogsBy(
+    { action } = {}
+) {
+    return mongo.collection("battle_log").find({ action });
+}
+
+async function dropBattleLog() {
+    return mongo.collection("battle_log").drop();
+}
+
+module.exports = {
+    insertBattleLog,
+    getBattleLogsBy,
+    dropBattleLog
 };
