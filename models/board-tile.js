@@ -21,10 +21,10 @@ async function insertBoardTiles(tiles) {
 async function getBoardTilesBy(
     { isShipHead, tileType } = {}
 ) {
-    return mongo.collection("board_tile").find({
+    return (await mongo.collection("board_tile").find({
         is_ship_head: isShipHead,
         tile_type: tileType
-    });
+    })).toArray();
 }
 
 async function getBoardTileBy({
