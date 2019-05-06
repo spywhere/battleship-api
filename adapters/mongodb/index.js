@@ -1,4 +1,5 @@
 const Adapter = require("../adapter");
+const config = require("../../common/config");
 const nosqlQuery = require("../../common/queries/nosql");
 
 const mongodb = require("mongodb");
@@ -41,7 +42,7 @@ const transformers = {
 };
 
 class MongoDBAdapter extends Adapter {
-    async getDatabase({ config }, databaseName) {
+    async getDatabase(databaseName) {
         if (client) {
             return client.db(databaseName);
         }
@@ -49,7 +50,7 @@ class MongoDBAdapter extends Adapter {
         const {
             "mongodb-host": mongodbHost,
             ...options
-        } = config.for("mongodb");
+        } = config("mongodb");
 
         client = await mongodb.connect(
             mongodbHost, options
@@ -92,7 +93,7 @@ class MongoDBAdapter extends Adapter {
         } = parameter;
 
         const database = await this.getDatabase(
-            this.resources, datasourceName
+            datasourceName
         );
         const collection = database.collection(collectionName);
         const readable = await database.listCollections({

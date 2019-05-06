@@ -1,4 +1,3 @@
-const Config = require("./config");
 const loader = require("./loader");
 
 function loadAdapters(adapterPaths) {
@@ -58,20 +57,14 @@ class Controller {
         rawRequest,
         overrideAdapters
     }) {
-        const config = {
-            // eslint-disable-next-line new-cap
-            for: (configPath) => Config(configPath)
-        };
-
         const adapters = overrideAdapters || setupAdapters({
             adapterList: this.adapterList,
             httpRequest: rawRequest,
-            config, request
+            request
         });
 
         // Perform delegate
         return this.delegate.perform({
-            config,
             adapters,
             request
         });

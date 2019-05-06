@@ -1,3 +1,5 @@
+const config = require("../common/config");
+
 function replaceAt(string, index, replacement) {
     if (!replacement) {
         return string;
@@ -16,8 +18,8 @@ module.exports = {
     adapters: [
         "mongodb/board-tile"
     ],
-    perform: async({ adapters, config }) => {
-        const gameOptions = config.for("game");
+    perform: async({ adapters }) => {
+        const gameOptions = config("game");
 
         const tiles = await adapters.getBoardTilesBy();
 
