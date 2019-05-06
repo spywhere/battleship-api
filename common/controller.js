@@ -3,7 +3,7 @@ const loader = require("./loader");
 function loadAdapters(adapterPaths) {
     return adapterPaths.map((adapterPath) => {
         const requirePath = loader.getRequirePath(
-            "/adapters", `${ adapterPath }`
+            "/models", `${ adapterPath }`
         );
 
         if (!requirePath) {

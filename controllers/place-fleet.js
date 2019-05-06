@@ -3,8 +3,8 @@ const gameOptions = require("../game");
 
 module.exports = {
     adapters: [
-        "mongodb/board-tile",
-        "mongodb/battle-log"
+        "board-tile",
+        "battle-log"
     ],
     perform: async({ request, adapters }) => {
         const {

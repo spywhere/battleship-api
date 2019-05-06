@@ -1,5 +1,5 @@
-const adapter = require("./index");
-const nosqlQuery = require("../../common/queries/nosql");
+const adapter = require("../adapters/mongodb");
+const nosqlQuery = require("../common/queries/nosql");
 
 module.exports = adapter.connector({
     battleship: {

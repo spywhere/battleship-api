@@ -1,5 +1,5 @@
-const Adapter = require("../adapter");
-const nosqlQuery = require("../../common/queries/nosql");
+const Adapter = require("./adapter");
+const nosqlQuery = require("../common/queries/nosql");
 
 const mongodb = require("mongodb");
 

@@ -16,7 +16,7 @@ function replaceAt(string, index, replacement) {
 
 module.exports = {
     adapters: [
-        "mongodb/board-tile"
+        "board-tile"
     ],
     perform: async({ adapters }) => {
         const tiles = await adapters.getBoardTilesBy();
