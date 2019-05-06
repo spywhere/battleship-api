@@ -1,5 +1,4 @@
 const Config = require("./config");
-const logger = require("./logger");
 const loader = require("./loader");
 
 function loadAdapters(adapterPaths) {
@@ -18,13 +17,12 @@ function loadAdapters(adapterPaths) {
 }
 
 function setupAdapters({
-    adapterList, httpRequest, config, app, request
+    adapterList, httpRequest, config, request
 }) {
     return adapterList.map(
         (adapter) => adapter.export({
             httpRequest,
             config,
-            app,
             request
         })
     ).reduce((previous, current) => ({ ...previous, ...current }), {});
@@ -38,7 +36,7 @@ class Controller {
                     loader.getControllerDelegate(delegateOrPath)
                 );
             } catch (error) {
-                logger.error(error);
+                console.error(error);
                 return undefined;
             }
         }
@@ -57,13 +55,10 @@ class Controller {
 
     async perform({
         request,
-        baseConfig,
-        app,
         rawRequest,
         overrideAdapters
     }) {
         const config = {
-            get: (key) => baseConfig[key],
             // eslint-disable-next-line new-cap
             for: (configPath) => Config(configPath)
         };
@@ -71,7 +66,7 @@ class Controller {
         const adapters = overrideAdapters || setupAdapters({
             adapterList: this.adapterList,
             httpRequest: rawRequest,
-            config, app, request
+            config, request
         });
 
         // Perform delegate

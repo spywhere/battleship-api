@@ -1,6 +1,6 @@
 /* global expect, jest */
-const Controller = require("../../../common/controller");
-const delegate = require("../../../controllers/game/reset-game");
+const Controller = require("../common/controller");
+const delegate = require("../controllers/reset-game");
 
 const controller = Controller.mock(delegate);
 

@@ -1,6 +1,6 @@
 /* global expect */
-const Controller = require("../../../common/controller");
-const delegate = require("../../../controllers/game/get-game-status");
+const Controller = require("../common/controller");
+const delegate = require("../controllers/get-game-status");
 
 const controller = Controller.mock(delegate);
 

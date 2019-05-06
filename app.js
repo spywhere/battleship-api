@@ -1,22 +1,18 @@
 const express = require("express");
 const bodyPaser = require("body-parser");
 
-const logger = require("./common/logger");
-const http = require("./common/http");
-const config = require("./common/config")("app");
 const routes = require("./routes");
 
 const app = express();
 
+const appPort = +(process.env.APP_PORT) || 3000;
+
 app.use(bodyPaser.json());
 
-app.use(routes({
-    ...app,
-    router: express.Router
-}));
+app.use(routes);
 
-app.use((request, response) => response.status(http.code.notFound).send());
+app.use((request, response) => response.status(404).send());
 
-app.listen(config.port, () => {
-    logger.info(`Server listened on port ${ config.port }`);
+app.listen(appPort, () => {
+    console.info(`Server listened on port ${ appPort }`);
 });

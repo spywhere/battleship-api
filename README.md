@@ -11,6 +11,9 @@ Some of the things that being removed to KISS are...
 - Dependency injections (via Controller)
 - Logging (will just directly print out into the console)
 
+We will still keep Docker and process management to help with easy setup and
+get the app running
+
 ## Remarks
 For simplicity purpose, the following points are assumed...
 

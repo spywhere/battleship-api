@@ -1,4 +1,4 @@
-const errors = require("../../common/errors");
+const errors = require("../common/errors");
 
 module.exports = {
     adapters: [
@@ -19,10 +19,11 @@ module.exports = {
         const possibleShipTypes = Object.keys(gameOptions.fleets);
 
         if (!possibleShipTypes.includes(shipType)) {
-            throw new errors.BadRequestError(
+            throw new errors.HTTPError(
                 `Ship type is not valid, possible values are: ${
                     possibleShipTypes.join(", ")
-                }`
+                }`,
+                400
             );
         }
 
@@ -31,10 +32,11 @@ module.exports = {
             positionX < 0 ||
             positionX >= gameOptions.board.width
         ) {
-            throw new errors.BadRequestError(
+            throw new errors.HTTPError(
                 `Placement position X must be a number between 0 and ${
                     gameOptions.board.width - 1
-                }.`
+                }.`,
+                400
             );
         }
 
@@ -43,10 +45,11 @@ module.exports = {
             positionY < 0 ||
             positionY >= gameOptions.board.height
         ) {
-            throw new errors.BadRequestError(
+            throw new errors.HTTPError(
                 `Placement position Y must be a number between 0 and ${
                     gameOptions.board.height - 1
-                }.`
+                }.`,
+                400
             );
         }
 
@@ -56,10 +59,11 @@ module.exports = {
         ];
 
         if (!possibleDirections.includes(direction)) {
-            throw new errors.BadRequestError(
+            throw new errors.HTTPError(
                 `Placement direction is not valid, possible values are: ${
                     possibleDirections.join(", ")
-                }`
+                }`,
+                400
             );
         }
 
@@ -75,11 +79,11 @@ module.exports = {
         });
 
         if (shipLimit <= shipHeadTiles.length) {
-            throw new errors.BadRequestError(`Maximum ${
+            throw new errors.HTTPError(`Maximum ${
                 shipType
             } placed (limit to ${
                 shipLimit
-            }).`);
+            }).`, 400);
         }
 
         // Ship shape
@@ -106,8 +110,9 @@ module.exports = {
             maxX > gameOptions.board.width ||
             maxY > gameOptions.board.height
         ) {
-            throw new errors.BadRequestError(
-                "Invalid placement, ship will be placed outside the board."
+            throw new errors.HTTPError(
+                "Invalid placement, ship will be placed outside the board.",
+                400
             );
         }
 
@@ -127,9 +132,9 @@ module.exports = {
         });
 
         if (nonFreeTile) {
-            throw new errors.BadRequestError(`Invalid placement, ${
+            throw new errors.HTTPError(`Invalid placement, ${
                 nonFreeTile.tile_type
-            } is nearby.`);
+            } is nearby.`, 400);
         }
 
         // Create ship tiles

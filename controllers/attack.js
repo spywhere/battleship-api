@@ -1,4 +1,4 @@
-const errors = require("../../common/errors");
+const errors = require("../common/errors");
 
 module.exports = {
     adapters: [
@@ -35,8 +35,9 @@ module.exports = {
         if (Object.keys(shipLefts).reduce(
             (sum, key) => sum + shipLefts[key], 0
         ) > 0) {
-            throw new errors.ForbiddenError(
-                "Defender did not finish their placement yet."
+            throw new errors.HTTPError(
+                "Defender did not finish their placement yet.",
+                403
             );
         }
 
@@ -74,10 +75,11 @@ module.exports = {
             positionX < 0 ||
             positionX >= gameOptions.board.width
         ) {
-            throw new errors.BadRequestError(
+            throw new errors.HTTPError(
                 `Target position X must be a number between 0 and ${
                     gameOptions.board.width - 1
-                }.`
+                }.`,
+                400
             );
         }
 
@@ -86,10 +88,11 @@ module.exports = {
             positionY < 0 ||
             positionY >= gameOptions.board.height
         ) {
-            throw new errors.BadRequestError(
+            throw new errors.HTTPError(
                 `Target position Y must be a number between 0 and ${
                     gameOptions.board.height - 1
-                }.`
+                }.`,
+                400
             );
         }
 
@@ -122,7 +125,7 @@ module.exports = {
         }
 
         if (existingShot || targetTile.status === "attacked") {
-            throw new errors.BadRequestError("Target has already attacked.");
+            throw new errors.HTTPError("Target has already attacked.", 400);
         }
 
         // Destroy all tiles with the same ship ID by update the status

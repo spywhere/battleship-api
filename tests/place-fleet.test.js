@@ -1,6 +1,6 @@
 /* global expect, jest */
-const Controller = require("../../../common/controller");
-const delegate = require("../../../controllers/defender/place-fleet");
+const Controller = require("../common/controller");
+const delegate = require("../controllers/place-fleet");
 
 const controller = Controller.mock(delegate);
 
