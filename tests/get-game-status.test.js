@@ -2,7 +2,7 @@
 const Controller = require("../common/controller");
 const delegate = require("../controllers/get-game-status");
 
-const controller = Controller.mock(delegate);
+const controller = new Controller(delegate);
 
 describe("Game status", () => {
     it("should return ocean tiles if there is no placement", async() => {

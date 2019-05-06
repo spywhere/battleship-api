@@ -45,11 +45,11 @@ function linkController(delegate) {
             }
         }).catch((error) => {
             let statusCode = 500;
-            let body = (process.env.NODE_ENV === "production" ? undefined : {
+            let body = {
                 name: error.name || undefined,
                 message: error.message || undefined,
                 stack: error.stack || undefined
-            });
+            };
 
             if (error instanceof errors.HTTPError) {
                 const { statusCode: newStatusCode } = error;

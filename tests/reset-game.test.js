@@ -2,7 +2,7 @@
 const Controller = require("../common/controller");
 const delegate = require("../controllers/reset-game");
 
-const controller = Controller.mock(delegate);
+const controller = new Controller(delegate);
 
 describe("Game reset", () => {
     it("should try to remove all board tiles", async() => {

@@ -2,7 +2,7 @@
 const Controller = require("../common/controller");
 const delegate = require("../controllers/attack");
 
-const controller = Controller.mock(delegate);
+const controller = new Controller(delegate);
 
 const shipLookup = {
     b: "battleship",

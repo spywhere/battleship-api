@@ -2,7 +2,7 @@
 const Controller = require("../common/controller");
 const delegate = require("../controllers/place-fleet");
 
-const controller = Controller.mock(delegate);
+const controller = new Controller(delegate);
 
 describe("Fleet placement", () => {
     it("should reject an invalid request (ship type)", async() => {
