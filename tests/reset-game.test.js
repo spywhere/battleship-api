@@ -1,8 +1,8 @@
 /* global expect, jest */
-const Controller = require("../common/controller");
+const Controller = require("../lib/controller");
 const delegate = require("../controllers/reset-game");
 
-const controller = new Controller(delegate);
+const controller = Controller.create(delegate);
 
 describe("Game reset", () => {
     it("should try to remove all board tiles", async() => {

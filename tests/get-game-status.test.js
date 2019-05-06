@@ -1,8 +1,8 @@
 /* global expect */
-const Controller = require("../common/controller");
+const Controller = require("../lib/controller");
 const delegate = require("../controllers/get-game-status");
 
-const controller = new Controller(delegate);
+const controller = Controller.create(delegate);
 
 describe("Game status", () => {
     it("should return ocean tiles if there is no placement", async() => {

@@ -1,8 +1,8 @@
 /* global expect, jest */
-const Controller = require("../common/controller");
+const Controller = require("../lib/controller");
 const delegate = require("../controllers/attack");
 
-const controller = new Controller(delegate);
+const controller = Controller.create(delegate);
 
 const shipLookup = {
     b: "battleship",
