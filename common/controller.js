@@ -1,7 +1,7 @@
 const loader = require("./loader");
 
-function loadAdapters(adapterPaths) {
-    return adapterPaths.map((adapterPath) => {
+function setupAdapters(adapterList) {
+    return adapterList.map((adapterPath) => {
         const requirePath = loader.getRequirePath(
             "/models", `${ adapterPath }`
         );
@@ -11,20 +11,8 @@ function loadAdapters(adapterPaths) {
         }
 
         // eslint-disable-next-line global-require
-        return require(requirePath)();
-    });
-}
-
-function setupAdapters({
-    adapterList, httpRequest, config, request
-}) {
-    return adapterList.map(
-        (adapter) => adapter.export({
-            httpRequest,
-            config,
-            request
-        })
-    ).reduce((previous, current) => ({ ...previous, ...current }), {});
+        return require(requirePath);
+    }).reduce((previous, current) => ({ ...previous, ...current }), {});
 }
 
 class Controller {
@@ -48,20 +36,15 @@ class Controller {
 
         // Preload all the adapters
         this.adapterList = (
-            this.mock ? [] : loadAdapters(this.delegate.adapters || [])
+            this.mock ? [] : this.delegate.adapters || []
         );
     }
 
     async perform({
         request,
-        rawRequest,
         overrideAdapters
     }) {
-        const adapters = overrideAdapters || setupAdapters({
-            adapterList: this.adapterList,
-            httpRequest: rawRequest,
-            request
-        });
+        const adapters = overrideAdapters || setupAdapters(this.adapterList);
 
         // Perform delegate
         return this.delegate.perform({

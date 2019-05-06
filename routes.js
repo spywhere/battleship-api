@@ -22,8 +22,7 @@ function linkController(delegate) {
         };
 
         controller.perform({
-            request: delegateRequest,
-            rawRequest: request
+            request: delegateRequest
         }).then((delegateResponse) => {
             const responseObject = delegateResponse || {};
 

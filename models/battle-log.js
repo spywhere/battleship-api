@@ -1,37 +1,25 @@
-const adapter = require("../adapters/mongodb");
-const nosqlQuery = require("../common/queries/nosql");
+const mongo = require("../lib/mongo");
 
-module.exports = adapter.connector({
-    battleship: {
-        insertBattleLog: ({
-            tileType, positionX, positionY, action
-        }) => ({
-            collection: "battle_log",
-            updateOne: nosqlQuery({
-                tile_type: tileType,
-                position_x: positionX,
-                position_y: positionY,
-                action
-            }, {
-                $set: {
-                    tile_type: tileType,
-                    position_x: positionX,
-                    position_y: positionY,
-                    action
-                }
-            }, {
-                upsert: true
-            })
-        }),
-        getBattleLogsBy: ({ action } = {}) => ({
-            collection: "battle_log",
-            find: {
-                action
-            }
-        }),
-        dropBattleLog: () => ({
-            collection: "battle_log",
-            drop: {}
-        })
-    }
-});
+module.exports = {
+    insertBattleLog: async({
+        tileType, positionX, positionY, action
+    }) => mongo.collection("battle_log").updateOne({
+        tile_type: tileType,
+        position_x: positionX,
+        position_y: positionY,
+        action
+    }, {
+        $set: {
+            tile_type: tileType,
+            position_x: positionX,
+            position_y: positionY,
+            action
+        }
+    }, {
+        upsert: true
+    }),
+    getBattleLogsBy: async(
+        { action } = {}
+    ) => mongo.collection("battle_log").find({ action }),
+    dropBattleLog: async() => mongo.collection("battle_log").drop()
+};
